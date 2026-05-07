@@ -18,6 +18,12 @@ public class TDdashboardPage extends BaseClass{
 	@FindBy(xpath="//button[text()='Logout']")
 	WebElement confirm_logout;
 
+	@FindBy(xpath = "//span[text()='Consultant']")
+	WebElement nav_consultant;
+	
+	@FindBy(xpath="//button[text()='Cancel']")
+	WebElement btn_cancel;
+	
 	public WebElement getBtn_Logout() {
 		return btn_Logout;
 	}
@@ -30,5 +36,24 @@ public class TDdashboardPage extends BaseClass{
 		btn_Logout.click();
 		confirm_logout.click();
 	}
+
+	public WebElement getNav_consultant() {
+		return nav_consultant;
+	}
+
+	public void setNav_consultant(WebElement nav_consultant) {
+		this.nav_consultant = nav_consultant;
+	}
+
+	public WebElement getBtn_cancel() {
+		return btn_cancel;
+	}
+
+	public void setBtn_cancel(WebElement btn_cancel) {
+		this.btn_cancel = btn_cancel;
+	}
+	
+	
+	
 
 }

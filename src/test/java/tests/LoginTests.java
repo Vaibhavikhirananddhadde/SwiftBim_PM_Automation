@@ -175,17 +175,42 @@ public class LoginTests extends BaseClass{
 		
 		//Verify that user can logout successfully.
 		@Test
-		public void logout() {
+		public void logout() throws Throwable {
 			LogManager.getLogger("----------------Starting Logout tests------------------");
 			login = new LoginPage();
 			dashboard = new TDdashboardPage();
 			
+			LogManager.getLogger("Logging in");
 			login.login("nagendra@swifterz.co", "swift@123");
-			dashboard.logout();
 			
+			LogManager.getLogger("Logging out");
+			dashboard.logout();
+			Thread.sleep(1000);
+			
+			String expectedURL = "http://localhost:5173/td/dashboard";
+			Assert.assertNotEquals(driver.getCurrentUrl(), expectedURL, "URL match");
+			LogManager.getLogger("---------------- Logout tests Ended------------------");
+		}
+		
+		//Verify that user stays logged in if he clicks Cancel button instead of logout from confirmation popup
+		@Test
+		public void cancelLogout() throws Throwable {
+			LogManager.getLogger("----------------Starting Logout tests------------------");
+			login = new LoginPage();
+			dashboard = new TDdashboardPage();
+			
+			LogManager.getLogger("Logging in");
+			login.login("nagendra@swifterz.co", "swift@123");
+			
+			dashboard.getBtn_Logout().click();
+			
+			dashboard.getBtn_cancel().click();
+			Thread.sleep(1000);
 			String expectedURL = "http://localhost:5173/td/dashboard";
 			Assert.assertEquals(driver.getCurrentUrl(), expectedURL, "URL does not match");
 			LogManager.getLogger("---------------- Logout tests Ended------------------");
+			
+			
 		}
 
 		
