@@ -158,7 +158,7 @@ public class LoginTests extends BaseClass{
 			wait.until(ExpectedConditions.visibilityOf(Email));
 			Email.clear();
 			
-			LogManager.getLogger("Left the password field blank");
+			LogManager.getLogger("Left the password field empty");
 			WebElement Password=login.getTxt_password();
 			wait.until(ExpectedConditions.visibilityOf(Password));
 			Password.clear();
