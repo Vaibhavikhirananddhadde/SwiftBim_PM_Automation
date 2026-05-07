@@ -170,7 +170,7 @@ public class LoginTests extends BaseClass{
 			
 	        String ExpectedURL = "http://localhost:5173/login";
 	        Assert.assertEquals(driver.getCurrentUrl(), ExpectedURL,"URL does not match");
-			LogManager.getLogger("-------------Login Tests ended----------------------");
+			LogManager.getLogger("-------------Login Tests ended--------------------");
 		}
 		
 		//Verify that user can logout successfully.
