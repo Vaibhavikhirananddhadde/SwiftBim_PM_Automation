@@ -73,6 +73,7 @@ public class ConsultantTests extends BaseClass{
 		String ActualConsultantName =addConsultant.getNewConsultant_name().getText();
 		
 		Assert.assertEquals(ActualConsultantName, fullName, "New consultant is not getting added!");
+		LogManager.getLogger("--------- Add new consultant test Ended---------------");
 		
 	}
 	
