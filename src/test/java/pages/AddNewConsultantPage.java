@@ -1,11 +1,19 @@
 package pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import base.BaseClass;
 
 public class AddNewConsultantPage extends BaseClass{
+	
+	public AddNewConsultantPage() {
+		PageFactory.initElements(driver, this);
+	}
 	
 	@FindBy(xpath="//input[@placeholder='Enter Employee Name']")
 	WebElement txt_FullName;
@@ -16,7 +24,7 @@ public class AddNewConsultantPage extends BaseClass{
 	@FindBy(xpath="//input[@placeholder='Enter Password']")
 	WebElement txt_password;
 	
-	@FindBy(xpath="//div[4]//div[1]//button[1]")
+	@FindBy(xpath="(//div[@class='relative w-full']/button)[1]")
 	WebElement dd_Role;
 	
 	@FindBy(xpath="//button[contains(text(),'Bim Consultant')]")
@@ -42,6 +50,12 @@ public class AddNewConsultantPage extends BaseClass{
 	
 	@FindBy(xpath="//button[normalize-space()='Submit']")
 	WebElement btn_Submit;
+	
+	@FindBy(xpath="(//div[@class='min-w-0']/h3)[1]")
+	WebElement newConsultant_name;
+	
+	@FindBy(xpath="//p[text()='Email already exists']")
+	WebElement error_emailExists;
 
 	public WebElement getTxt_FullName() {
 		return txt_FullName;
@@ -65,14 +79,6 @@ public class AddNewConsultantPage extends BaseClass{
 
 	public void setTxt_password(WebElement txt_password) {
 		this.txt_password = txt_password;
-	}
-
-	public WebElement getDd_Role() {
-		return dd_Role;
-	}
-
-	public void setDd_Role(WebElement dd_Role) {
-		this.dd_Role = dd_Role;
 	}
 
 	public WebElement getOpt_BC() {
@@ -138,6 +144,57 @@ public class AddNewConsultantPage extends BaseClass{
 	public void setBtn_Submit(WebElement btn_Submit) {
 		this.btn_Submit = btn_Submit;
 	}
+	
+	public WebElement getNewConsultant_name() {
+		return newConsultant_name;
+	}
+
+	public void setNewConsultant_name(WebElement newConsultant_name) {
+		this.newConsultant_name = newConsultant_name;
+	}
+
+	
+	public WebElement getError_emailExists() {
+		return error_emailExists;
+	}
+
+	public void setError_emailExists(WebElement error_emailExists) {
+		this.error_emailExists = error_emailExists;
+	}
+
+	public void selectRole(String role) {
+
+	    dd_Role.click();
+
+	    WebElement option = driver.findElement(
+	        By.xpath("//button[normalize-space()='" + role + "']")
+	    );
+
+	    option.click();
+	}
+	
+	public void selectType(String Type) {
+		dd_type.click();
+		
+		List<WebElement> typeOptions = driver.findElements(By.xpath("//div[@class='max-h-[220px] overflow-y-auto custom-scrollbar']/button"));
+		for (int i = 0; i < typeOptions.size(); i++) {
+
+	        // Re-fetch elements every iteration
+	        typeOptions = driver.findElements(
+	            By.xpath("//div[@class='max-h-[220px] overflow-y-auto custom-scrollbar']/button")
+	        );
+
+	        WebElement option = typeOptions.get(i);
+
+	        if (option.getText().trim().equalsIgnoreCase(Type)) {
+
+	            option.click();
+	            break;
+	        }
+	    }
+	}
+	
+	
 	
 	
 	
