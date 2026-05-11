@@ -12,6 +12,7 @@
 
         <classes>
             <class name="tests.LoginTests"/>
+            <class name="ConsultantTests"/>
         </classes>
 
     </test>
