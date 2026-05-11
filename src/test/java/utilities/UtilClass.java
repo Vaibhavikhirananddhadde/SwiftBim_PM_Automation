@@ -71,7 +71,7 @@ public static WebDriver driver;
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
 			// Remove headless mode for better stability
-			// options.addArguments("--headless");
+			 options.addArguments("--headless");
 			options.addArguments("--no-sandbox");
 			options.addArguments("--disable-dev-shm-usage");
 			options.addArguments("--disable-gpu");
